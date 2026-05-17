@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
-import { set, useForm } from "react-hook-form";
-import { AuthContext } from "../context/auth-context";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Auth() {
     const [mode, setMode] = useState("signup");
@@ -9,7 +9,7 @@ export default function Auth() {
 
     const navigate = useNavigate();
 
-    const { signUp, user, logout, login } = useContext(AuthContext);
+    const { signUp, login } = useAuth();
 
     const {
         register,
@@ -39,12 +39,10 @@ export default function Auth() {
         <div className="page">
             <div className="container">
                 <div className="auth-container">
-                    {user && <p>User logged in: {user.email}</p>}
                     <h1 className="page-title">
                         {mode === "signup" ? "Sign Up" : "Login"}
                     </h1>
                     <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
-
                         {error && <div className="error-message">{error}</div>}
                         <div className="form-group">
                             <label className="form-label" htmlFor="email">
@@ -56,7 +54,9 @@ export default function Auth() {
                                 id="email"
                                 {...register("email", { required: "Email is required" })}
                             />
-                            {errors.email && <span className="form-error">{errors.email.message}</span>}
+                            {errors.email && (
+                                <span className="form-error">{errors.email.message}</span>
+                            )}
                         </div>
                           <div className="form-group">
                             <label className="form-label" htmlFor="password">
