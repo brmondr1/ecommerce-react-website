@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Auth() {
-    const [mode, setMode] = useState("signup");
+    const location = useLocation();
+    const [mode, setMode] = useState(location.state?.mode === 'login' ? 'login' : 'signup');
     const [ error, setError] = useState(null);
+
+    useEffect(() => {
+        if (location.state?.mode === 'login' || location.state?.mode === 'signup') {
+            setMode(location.state.mode);
+            setError(null);
+        }
+    }, [location.state]);
 
     const navigate = useNavigate();
 
@@ -46,10 +54,10 @@ export default function Auth() {
                         {error && <div className="error-message">{error}</div>}
                         <div className="form-group">
                             <label className="form-label" htmlFor="email">
-                                Email
+                                Email <span className="required-indicator">*</span>
                             </label>
                             <input 
-                                className="form-input" 
+                                className={`form-input ${errors.email ? "form-input-error" : ""}`} 
                                 type="email" 
                                 id="email"
                                 {...register("email", { required: "Email is required" })}
@@ -60,7 +68,7 @@ export default function Auth() {
                         </div>
                           <div className="form-group">
                             <label className="form-label" htmlFor="password">
-                                Password
+                                Password <span className="required-indicator">*</span>
                             </label>
                             <input
                                 {...register("password", {
@@ -74,7 +82,7 @@ export default function Auth() {
                                     message: "Password must be at most 12 characters",
                                 },
                                 })}
-                                className="form-input"
+                                className={`form-input ${errors.password ? "form-input-error" : ""}`}
                                 type="password"
                                 id="password"
                             />

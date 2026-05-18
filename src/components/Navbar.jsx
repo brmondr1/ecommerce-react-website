@@ -7,7 +7,7 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" className="navbar-brand">
-                    ShopHub
+                    BingusHub
                 </Link>
                 <div className="navbar-links">
                     <Link to="/" className="navbar-link">
@@ -20,10 +20,10 @@ export default function Navbar() {
                 <div className="navbar-auth">
                     {!user ? (
                         <div className="navbar-auth-link">
-                            <Link to="/auth" className="btn btn-secondary">
+                            <Link to="/auth" state={{ mode: 'login' }} className="btn btn-secondary">
                                 Login
                             </Link>
-                            <Link to="/auth" className="btn btn-primary">
+                            <Link to="/auth" state={{ mode: 'signup' }} className="btn btn-primary">
                                 Signup
                             </Link>
                         </div>
