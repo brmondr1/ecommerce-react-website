@@ -101,6 +101,9 @@ export default function Checkout() {
         if (fresh) {
             setShippingDetails((prev) => ({ ...initialShippingDetails, ...fresh }));
             setSaveAddress(true);
+        } else {
+            setShippingDetails(initialShippingDetails);
+            setSaveAddress(false);
         }
     }, [savedAddressKey]);
 
@@ -249,6 +252,8 @@ export default function Checkout() {
             .filter(Boolean)
             .join(' ');
 
+        const cardLast4 = paymentDetails.paymentMethod === "card" ? paymentDetails.cardNumber.slice(-4) : "";
+        
         setOrderConfirmation({
             fullName,
             email: shippingDetails.email.trim(),
@@ -259,7 +264,7 @@ export default function Checkout() {
             zipCode: shippingDetails.zipCode.trim(),
             paymentMethod: paymentDetails.paymentMethod,
             billingAddress: paymentDetails.billingAddress.trim(),
-            cardNumber: paymentDetails.cardNumber,
+            cardLast4,
             total,
         });
         if (savedAddressKey) {
@@ -302,10 +307,17 @@ export default function Checkout() {
                         <div className="checkout-success-summary">
                             <p><strong>Confirmation email:</strong> {orderConfirmation.email}</p>
                             <p><strong>Shipping to:</strong> {orderConfirmation.address}{orderConfirmation.address2 ? `, ${orderConfirmation.address2}` : ''}, {orderConfirmation.city}, {orderConfirmation.state} {orderConfirmation.zipCode}</p>
-                            <p><strong>Payment method:</strong> {orderConfirmation.paymentMethod === 'card' ? 'Credit Card (simulated)' : 'Other selected option'}</p>
+                            <p>
+                                <strong>Payment method:</strong>{" "}
+                                {{
+                                    card: "Credit Card (simulated)",
+                                    cash: "Cash on delivery",
+                                    bank: "Bank transfer",
+                                }[orderConfirmation.paymentMethod] ?? orderConfirmation.paymentMethod}
+                            </p>
                             <p><strong>Billing address:</strong> {orderConfirmation.billingAddress}</p>
-                            {orderConfirmation.cardNumber ? (
-                                <p><strong>Card ending in:</strong> {orderConfirmation.cardNumber.slice(-4)}</p>
+                            {orderConfirmation.cardLast4 ? (
+                                <p><strong>Card ending in:</strong> {orderConfirmation.cardLast4}</p>
                             ) : null}
                             <p><strong>Total paid:</strong> ${orderConfirmation.total.toFixed(2)}</p>
                         </div>
