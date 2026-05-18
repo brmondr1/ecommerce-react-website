@@ -8,9 +8,18 @@ export default function AuthProvider({ children }) {
     ? { email: localStorage.getItem("currentUserEmail") }
     : null
 );
+    function readUsers() {
+        try {
+            const raw = localStorage.getItem("users");
+            const parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch {
+            return [];
+        }
+    }
 
     function signUp(email, password) {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = readUsers();
 
         if (users.find((u) => u.email === email)) {
             return { success: false, error: "Email already exists" };
@@ -26,7 +35,7 @@ export default function AuthProvider({ children }) {
     }
 
     function login(email, password) {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        const users = readUsers();
         const user = users.find(
             (u) => u.email === email && u.password === password
         );

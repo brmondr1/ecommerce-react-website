@@ -71,7 +71,7 @@ export default function Auth() {
                                 },
                                 maxLength: {
                                     value: 12,
-                                    message: "Password must be less than 12 characters",
+                                    message: "Password must be at most 12 characters",
                                 },
                                 })}
                                 className="form-input"

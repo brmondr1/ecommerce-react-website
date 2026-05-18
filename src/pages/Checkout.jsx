@@ -3,10 +3,12 @@ import { useCart } from '../context/CartContext';
 export default function Checkout() {
     const { getCartItemsWithProducts, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart();
     const cartItems= getCartItemsWithProducts();
+    const isCartEmpty = cartItems.length === 0;
 
     const total = getCartTotal();
 
     function placeOrder() {
+        if(isCartEmpty) return;
         alert("Successfully placed order!");
         clearCart();
     }
@@ -75,6 +77,7 @@ export default function Checkout() {
                         </div>
                         <button className="btn btn-primary btn-large btn-block"
                         onClick={placeOrder}
+                        disabled={isCartEmpty}
                         >
                             Place Order
                         </button>
