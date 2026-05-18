@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 export default function ProductCard({ product }) {
+    const { addToCart, cartItems } = useCart();
+    const productInCart = cartItems.find((item) => item.id === product.id);
+
+    const productQuantutyLabel = productInCart
+        ? `(${productInCart.quantity})`
+        : "";
     return (
         <div className="product-card">
             <img src={product.image} alt={product.name} className="product-card-image" />
@@ -11,7 +18,10 @@ export default function ProductCard({ product }) {
                     <Link className="btn btn-secondary" to={`/products/${product.id}`}>
                     View Details
                     </Link>
-                    <button className="btn btn-primary">Add to Cart</button>
+                    <button className="btn btn-primary"
+                    onClick={() => addToCart(product.id)}>
+                        Add to Cart {productQuantutyLabel}
+                    </button>
                 </div>
             </div>
         </div>
