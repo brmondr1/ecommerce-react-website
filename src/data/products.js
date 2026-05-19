@@ -71,42 +71,6 @@ const products = [
     description:
       "1080p HD webcam with auto-focus and built-in microphone. Ideal for video calls and streaming.",
   },
-  {
-    id: 9,
-    name: "External Hard Drive",
-    price: 119.99,
-    image:
-      "https://images.unsplash.com/photo-1756836857570-127b0408b676?w=500&h=500&fit=crop",
-    description:
-      "External hard drive with 2TB storage capacity. Fast data transfer and reliable backup solution.",
-  },
-  {
-    id: 10,
-    name: "JBL Bluetooth Speaker",
-    price: 59.99,
-    image:
-      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop",
-    description:
-      "Portable JBL Bluetooth speaker with powerful sound and long battery life. Perfect for outdoor and indoor use.",
-  },
-  {
-    id: 11,
-    name: "Gaming Chair",
-    price: 199.99,
-    image:
-      "https://images.unsplash.com/photo-1670946839270-cc4febd43b09?w=500&h=500&fit=crop",
-    description:
-      "Ergonomic gaming chair with adjustable height and lumbar support. Perfect for long gaming sessions.",
-  },
-  {
-    id: 12,
-    name: "Monitor",
-    price: 399.99,
-    image:
-      "https://plus.unsplash.com/premium_photo-1680721575441-18d5a0567269?w=500&h=500&fit=crop",
-    description:
-      "High-resolution monitor with 4K display and vibrant colors. Ideal for gaming, design, and productivity.",
-  },
 ];
 
 export function getProducts() {
