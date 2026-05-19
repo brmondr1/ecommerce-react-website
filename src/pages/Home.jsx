@@ -6,9 +6,9 @@ export default function Home() {
     return (
         <div className="page">
             <div className="home-hero">
-                <h1 className="home-title">Welcome to BingusHub</h1>
+                <h1 className="home-title">Welcome to Cybermart</h1>
                 <p className="home-subtitle">
-                    Your one-stop shop for all your needs.
+                    Your one-stop shop for all your tech needs.
                 </p>
             </div>
             <div className="container">

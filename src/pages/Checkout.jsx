@@ -333,7 +333,7 @@ export default function Checkout() {
                 <h1 className="page-title">Checkout</h1>
                 <div className="checkout-container">
                     <div className="checkout-items">
-                        <h2 className="checkout-section-title">order summary</h2>
+                        <h2 className="checkout-section-title">Order Summary</h2>
                         {cartItems.map((item) => (
                             <div className="checkout-item" key={item.id}>
                                 <img
@@ -379,10 +379,10 @@ export default function Checkout() {
                     </div>
 
                     <form className="checkout-summary checkout-form" onSubmit={placeOrder}>
-                        <h2 className='checkout-section-title'>Shipping details</h2>
+                        <h2 className='checkout-section-title'>Shipping Details</h2>
                         <div className="checkout-form-grid">
                             <div className="form-group">
-                                <label className="form-label" htmlFor="firstName">First name <span className="required-indicator">*</span></label>
+                                <label className="form-label" htmlFor="firstName">First Name <span className="required-indicator">*</span></label>
                                 <input
                                     className={`form-input ${activeInvalidShippingField === 'firstName' && getShippingFieldError('firstName', shippingDetails.firstName) ? 'form-input-error' : ''}`}
                                     id="firstName"
@@ -398,7 +398,7 @@ export default function Checkout() {
                                 ) : null}
                             </div>
                             <div className="form-group">
-                                <label className="form-label" htmlFor="middleName">Middle name</label>
+                                <label className="form-label" htmlFor="middleName">Middle Name</label>
                                 <input
                                     className="form-input"
                                     id="middleName"
@@ -410,7 +410,7 @@ export default function Checkout() {
                                 />
                             </div>
                             <div className="form-group checkout-form-full">
-                                <label className="form-label" htmlFor="lastName">Last name <span className="required-indicator">*</span></label>
+                                <label className="form-label" htmlFor="lastName">Last Name <span className="required-indicator">*</span></label>
                                 <input
                                     className={`form-input ${activeInvalidShippingField === 'lastName' && getShippingFieldError('lastName', shippingDetails.lastName) ? 'form-input-error' : ''}`}
                                     id="lastName"
@@ -537,9 +537,9 @@ export default function Checkout() {
                             </div>
                         ) : null}
 
-                        <h2 className='checkout-section-title'>Payment details</h2>
+                        <h2 className='checkout-section-title'>Payment Details</h2>
                         <div className="form-group">
-                            <label className="form-label" htmlFor="paymentMethod">Preferred payment option</label>
+                            <label className="form-label" htmlFor="paymentMethod">Preferred Payment Option</label>
                             <select
                                 className="form-input"
                                 id="paymentMethod"
@@ -554,7 +554,7 @@ export default function Checkout() {
                         </div>
 
                         <div className="form-group checkout-form-full">
-                            <label className="form-label" htmlFor="billingAddress">Billing address <span className="required-indicator">*</span></label>
+                            <label className="form-label" htmlFor="billingAddress">Billing Address <span className="required-indicator">*</span></label>
                             <input
                                 className="form-input"
                                 id="billingAddress"
@@ -570,7 +570,7 @@ export default function Checkout() {
                         {paymentDetails.paymentMethod === 'card' ? (
                             <div className="checkout-form-grid">
                                 <div className="form-group checkout-form-full">
-                                    <label className="form-label" htmlFor="cardName">Name on card <span className="required-indicator">*</span></label>
+                                    <label className="form-label" htmlFor="cardName">Name on Card <span className="required-indicator">*</span></label>
                                     <input
                                         className={`form-input ${activeInvalidPaymentField === 'cardName' && getPaymentFieldError('cardName', paymentDetails.cardName) ? 'form-input-error' : ''}`}
                                         id="cardName"
@@ -587,7 +587,7 @@ export default function Checkout() {
                                     ) : null}
                                 </div>
                                 <div className="form-group checkout-form-full">
-                                    <label className="form-label" htmlFor="cardNumber">Card number <span className="required-indicator">*</span></label>
+                                    <label className="form-label" htmlFor="cardNumber">Card Number <span className="required-indicator">*</span></label>
                                     <input
                                         className={`form-input ${activeInvalidPaymentField === 'cardNumber' && getPaymentFieldError('cardNumber', paymentDetails.cardNumber) ? 'form-input-error' : ''}`}
                                         id="cardNumber"
@@ -607,7 +607,7 @@ export default function Checkout() {
                                     ) : null}
                                 </div>
                                 <div className="form-group">
-                                    <label className="form-label" htmlFor="expiryDate">Expiry date <span className="required-indicator">*</span></label>
+                                    <label className="form-label" htmlFor="expiryDate">Expiry Date <span className="required-indicator">*</span></label>
                                     <input
                                         className={`form-input ${activeInvalidPaymentField === 'expiryDate' && getPaymentFieldError('expiryDate', paymentDetails.expiryDate) ? 'form-input-error' : ''}`}
                                         id="expiryDate"
