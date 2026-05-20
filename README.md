@@ -7,7 +7,9 @@ Things you can do on the website is:
 3. You can add products to your cart. <br>
 4. You can create an account or log in. <br>
 5. You can go to checkout, enter shipping and payment info, and place an order. <br>
-6. After placing an order, it shows a success message like a real store. 
+6. After placing an order, it shows a success message like a real store.
+
+![Ecommerce website](https://github.com/brmondr1/ecommerce-react-website/blob/10a10cd60b541e20a1d0dad01c5c5debeff0ef75/image_2026-05-20_123604091.png) 
 
 # ⚙️ Technologies
 
